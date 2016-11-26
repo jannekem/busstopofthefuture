@@ -22,7 +22,6 @@
                 alert(xmlHttp.status + xmlHttp.statusText)
             }
             var xml = JSON.parse(xmlHttp.responseText);
-            alert(xmlHttp.responseText);
             temperature = xml.list[0].main.temp;
             type = xml.list[0].weather[0].main;
             $("#text").html("Weather in Helsinki: " + Math.round(temperature - 273.15, -2) + "°C, " + type.toLowerCase());
