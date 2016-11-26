@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map { height: 100%; }
+      </style>
+    </head>
+  <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <div id="weather"></div>
+    <b id='text'> Hi! </b>
+    <script>
+        function httpGet()
+        {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", 'http://api.openweathermap.org/data/2.5/forecast?id=658225&appid=3d75acc7a3a6c30667b2daf8dcb11db1', false); // false for synchronous request
+            xmlHttp.send();
+            if (xmlHttp.status != 200)
+            {
+                alert(xmlHttp.status + xmlHttp.statusText)
+            }
+            var xml = JSON.parse(xmlHttp.responseText);
+            alert(xmlHttp.responseText);
+            temperature = xml.list[0].main.temp;
+            type = xml.list[0].weather[0].main;
+            $("#text").html("Weather in Helsinki: " + Math.round(temperature - 273.15, -2) + "°C, " + type.toLowerCase());
+        }
+        window.onload = httpGet;
+    </script>
+  </body>
+</html>
