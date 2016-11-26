@@ -17,3 +17,4 @@ To learn how to deploy this starter web app to App Service in a few minutes, go 
 
 See [LICENSE](LICENSE).
 
+Weather data is fetched from http://openweathermap.org/.
